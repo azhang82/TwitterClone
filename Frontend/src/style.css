@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(0, 0, 0);
+  color: #fff0ff;
+  font-family: "Roboto", sans-serif;
+}
+ul {
+  list-style-type: none;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+  margin-bottom: 20px;
+  color: #fff0ff;
+  text-shadow: 1px 1px 2px #000;
+  letter-spacing: 2px;
+}
+
+.leftbar {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 400px; /* Set the width of the leftbar */
+  position: absolute; /* Fixed leftbar (stay in place on scroll) */
+  left: 150px;
+  background-color: rgb(0, 0, 0); /* Black */
+  padding-top: 20px;
+  margin-top: 50px;
+}
+
+.leftbar a {
+  font-size: 25px;
+  color: #818181;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  padding: 10px;
+  text-decoration: none;
+  text-align: right;
+  font-family: "Roboto", sans-serif;
+}
+
+.leftbar a:hover {
+  color: #f1f1f1;
+}
+
+.midbar {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 800px; /* Set the width of the leftbar */
+  position: fixed; /* Fixed leftbar (stay in place on scroll) */
+  right: 700px;
+  padding-top: 20px;
+  background-color: #1b1818;
+}
+
+.rightbar {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 700px; /* Set the width of the leftbar */
+  position: fixed; /* Fixed leftbar (stay in place on scroll) */
+  right: 0px;
+  padding-top: 20px;
+  background-color: #000000;
+}
+
+.rightbar #title {
+  font-size: 18px;
+  color: #ffffff;
+  padding: 10px;
+  font-weight: 700;
+  margin-left: 100px;
+  margin-top: 80px;
+  font-family: "Roboto", sans-serif;
+}
+
+.sidebar-menu__item {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  margin-bottom: 3vh;
+}
+
+.sidebar-menu__item-icon {
+  filter: invert(1);
+  width: 50px;
+}
+
+#tweet-button {
+  background-color: rgb(20, 131, 235);
+  border: none;
+  color: white;
+  padding: 20px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  width:50%;  
+  margin-bottom: 40px;
+}
+
+#tweet-button {border-radius: 30px;}
+
+#submit-tweet {
+  background-color: #000;
+  position: absolute;
+  top: 50%;
+  width: 300px;
+  text-align: center;
+}
+
+
+.Input-Username {
+  color: rgb(20, 131, 235);
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
+
+.Input-Tweet {
+  color: rgb(20, 131, 235);
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
+
+#login {
+  position: fixed;
+  margin-top: 40px;
+}
+
+#register {
+  position: fixed;
+}
