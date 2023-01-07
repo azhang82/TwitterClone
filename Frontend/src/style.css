@@ -55,9 +55,11 @@ h1 {
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 800px; /* Set the width of the leftbar */
   position: fixed; /* Fixed leftbar (stay in place on scroll) */
-  right: 700px;
+  /* right: 700px; */
   padding-top: 20px;
   background-color: #1b1818;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .rightbar {
@@ -109,21 +111,28 @@ h1 {
 #tweet-button {border-radius: 30px;}
 
 #submit-tweet {
+  font-family: "Roboto", sans-serif;
   background-color: #000;
   position: absolute;
-  top: 50%;
-  width: 300px;
-  text-align: center;
+  top: 10%;
+  right: 10%;
+  width: 80%;
+  height:35%;
+  text-align: left;
+  border-radius: 30px;
 }
 
 
 .Input-Username {
+  font-family: "Roboto", sans-serif;
+  font-weight:20px;
+  margin:12px;
   color: rgb(20, 131, 235);
   font-size: 20px;
-  font-family: "Roboto", sans-serif;
 }
 
 .Input-Tweet {
+  margin:12px;
   color: rgb(20, 131, 235);
   font-size: 20px;
   font-family: "Roboto", sans-serif;
@@ -136,4 +145,26 @@ h1 {
 
 #register {
   position: fixed;
+}
+
+.close {
+  float: left;
+  margin: 15px;
+}
+
+.submitButton {
+  background-color:rgb(20, 131, 235);
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-size:100%;
+  float: right;
+  width:30%;
+  height:10%;
+  margin: 50px;
+  border:none;
+  border-radius: 10px;
+}
+
+.icon {
+  margin-right:20px;
 }

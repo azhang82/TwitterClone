@@ -1,23 +1,19 @@
 import { Tweet } from "../types";
+import { FormEvent, FormEventHandler } from "react";
 
 
-async function fetchTweets(username: string | null) {
-
-    // TODO: fetch the JSON of tweets from the specified username (or everyone, if null).
-    //       Afterwards, set the innerHTML of the specified DOM element 
-    //       to display the tweets as HTML
- 
-    // uncomment this line to set a breakpoint here.
-	// If your browser's Developer Tool is open, it will pause here
-    // debugger;
+export async function fetchTweets(username: string | null) {
     
     const dom = document.querySelector("#tweets"); // Variable to store the HTML div element called tweets
-
-    
-    
-    let response = await fetch(`http://localhost:12345/json/${username}`, {
+    let response;
+    if(!username) {
+        response = await fetch("localhost12345/tweets", {
         headers: {"Access-Control-Allow-Origin":"*"}
     });
+    } else {
+        response =  await fetch(`http://localhost:12345/json/${username}`, {
+        headers: {"Access-Control-Allow-Origin":"*"}
+    });}
     let tweets :Tweet[] = await response.json();
     
     const tweetString = `
@@ -28,10 +24,11 @@ async function fetchTweets(username: string | null) {
     if(dom) { //checking if dom exists
         dom.innerHTML = `<h3>Tweets from ${username ?? "everyone"}</h3>` + tweetString; // displaying the content into the div
     }
+    
 }
 
 // get the username of the user we should be fetching tweets for based on the URL
-function getUsernameToFetch() {
+export function getUsernameToFetch() {
     const pathname = window.location.pathname;
     const index = pathname.lastIndexOf("/");
     const username = pathname.substring(index + 1);
@@ -44,8 +41,8 @@ function getUsernameToFetch() {
     }
 }
 
-async function handleSubmission(event :Event) {
-    event.preventDefault(); //  
+export async function handleSubmission(event :FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     const usernameInput = document.getElementById("username-input") as HTMLInputElement;
     const messageTextArea = document.getElementById("tweet-input") as HTMLTextAreaElement;
     const body = {
@@ -74,7 +71,7 @@ if (form != null && btn != null) {
 document.addEventListener('DOMContentLoaded', () => fetchTweets(getUsernameToFetch()));
 
 
-async function handleLoginSubmission(event: Event) {
+export async function handleLoginSubmission(event :FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const usernameInput = document.getElementById("username-input") as HTMLInputElement;
@@ -93,7 +90,7 @@ async function handleLoginSubmission(event: Event) {
     handleResponse(response, "Login Succeeded!", "Invalid Login!", "login-response");
 }
 
-async function handleRegistrationSubmission(event: Event) {
+export async function handleRegistrationSubmission(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const usernameInput = document.getElementById("username-input") as HTMLInputElement;
