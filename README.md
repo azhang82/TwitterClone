@@ -1,3 +1,6 @@
 # TwitterClone
 
-### Prob last time I'll remake this
+### Twitta Clone
+Now can view users' tweets, can login and register accounts
+#### Still gotta fix create tweet
+
