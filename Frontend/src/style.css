@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
 body {
   margin: 0;
   padding: 0;
@@ -28,7 +29,7 @@ h1 {
 .leftbar {
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 400px; /* Set the width of the leftbar */
-  position: absolute; /* Fixed leftbar (stay in place on scroll) */
+  position: fixed; /* Fixed leftbar (stay in place on scroll) */
   left: 150px;
   background-color: rgb(0, 0, 0); /* Black */
   padding-top: 20px;
@@ -54,7 +55,7 @@ h1 {
 .midbar {
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 800px; /* Set the width of the leftbar */
-  position: fixed; /* Fixed leftbar (stay in place on scroll) */
+  position: absolute; /* Fixed leftbar (stay in place on scroll) */
   /* right: 700px; */
   padding-top: 20px;
   background-color: #1b1818;
@@ -131,12 +132,6 @@ h1 {
   font-size: 20px;
 }
 
-.Input-Tweet {
-  margin:12px;
-  color: rgb(20, 131, 235);
-  font-size: 20px;
-  font-family: "Roboto", sans-serif;
-}
 
 #login {
   position: fixed;
@@ -167,4 +162,81 @@ h1 {
 
 .icon {
   margin-right:20px;
+}
+
+.loginLink {
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  margin-left:140px;
+}
+
+
+
+.registerLink {
+  font-family: "Roboto", sans-serif;
+  color:#ffffff;
+  margin-left: 140px;
+}
+
+#tweets {
+  display: flex;
+  margin-left: 30px;
+  align-items: left;
+  justify-content: center;
+  width: 84%;
+  flex-direction: column;
+}
+
+.tweetInput {
+  color: rgb(20, 131, 235);
+  font-size: 200%;
+  font-family: "Heebo", sans-serif;
+  margin-right: 20px;
+  
+}
+
+#tweet-input {
+  margin-top: 15px;
+  margin-left: 20px;
+  height:80px;
+  width:550px;
+  background-color: #dddddd;
+  color: #666666;
+  padding: 1em;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  outline: none;
+  font-family: "Heebo", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  transition: all 0.2s;
+  resize: none;
+}
+
+.loginPage {
+  position: fixed;
+}
+
+.registerPage {
+  position: fixed;
+}
+
+.bubb1 {
+  background-color: rgb(20, 131, 235);
+  height: 150px;
+  width: 380px;
+  border-radius: 40px;
+  margin-top: 60px;
+  margin-left: 100px;
+}
+
+.loginLink {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+}
+
+.registerLink {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
 }

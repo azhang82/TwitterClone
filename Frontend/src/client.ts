@@ -7,7 +7,7 @@ export async function fetchTweets(username: string | null) {
     const dom = document.querySelector("#tweets"); // Variable to store the HTML div element called tweets
     let response;
     if(!username) {
-        response = await fetch("localhost12345/tweets", {
+        response = await fetch("http://localhost:12345/tweets", {
         headers: {"Access-Control-Allow-Origin":"*"}
     });
     } else {
@@ -15,16 +15,7 @@ export async function fetchTweets(username: string | null) {
         headers: {"Access-Control-Allow-Origin":"*"}
     });}
     let tweets :Tweet[] = await response.json();
-    
-    const tweetString = `
-        <ul>
-            ${tweets.map(tweet => `<li>${tweet.message}</li>`)};
-        </ul>
-        `
-    if(dom) { //checking if dom exists
-        dom.innerHTML = `<h3>Tweets from ${username ?? "everyone"}</h3>` + tweetString; // displaying the content into the div
-    }
-    
+    return tweets;    
 }
 
 // get the username of the user we should be fetching tweets for based on the URL
@@ -43,19 +34,16 @@ export function getUsernameToFetch() {
 
 export async function handleSubmission(event :FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const usernameInput = document.getElementById("username-input") as HTMLInputElement;
     const messageTextArea = document.getElementById("tweet-input") as HTMLTextAreaElement;
     const body = {
-        username: usernameInput.value,
         tweet: messageTextArea.value
     };
-    let response = await fetch("http://localhost:12345/tweets", {
+    let response = await fetch("http://localhost:12345/createTweet", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
     });
-
-    console.log(response.body);
+    console.log(response.json());
 }
 
 const btn = document.getElementById('tweet-button');
@@ -81,7 +69,7 @@ export async function handleLoginSubmission(event :FormEvent<HTMLFormElement>) {
         password: passwordInput.value
     };
     
-    let response = await fetch("/login", {
+    let response = await fetch("http://localhost:12345/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -114,7 +102,8 @@ export async function handleRegistrationSubmission(event: FormEvent<HTMLFormElem
         username: usernameInput.value,
         password: passwordInput.value
     };
-    let response = await fetch("/register", {
+    console.log(body);
+    let response = await fetch("http://localhost:12345/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)

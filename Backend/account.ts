@@ -1,7 +1,9 @@
 import { DataTypes, Sequelize } from "sequelize";
-import { User } from "./types";
+import { User, Tweet } from "./types";
 import * as bcrypt  from "bcrypt";
 import { Request, Response } from "express";
+import { createTweet } from "./fake-data-adaptor";
+import { createImportSpecifier } from "typescript";
 
 
 const sequelize = createDb();
@@ -22,6 +24,7 @@ export async function createUser(user: User): Promise<User> {
     });
     return createdUser.get({ plain: true });
 }
+
 
 export async function getUserByUsername(username: string): Promise<User | null> { 
     await UserModel.sync();
@@ -68,6 +71,23 @@ export async function login(request: Request): Promise<string> {
         return Promise.reject(error);
     }
 }
+//Debug this, data is not shown.
+export async function createTweets(request: Request): Promise<Tweet | null>  {
+    const user = request.session.user;
+    console.log(user);
+    if(user) {
+        const username = user.username;
+        const foundUser = await getUserByUsername(username);
+        if(foundUser) {
+            const sender = foundUser?.id;
+            const message = request.body;
+            const timestamp = new Date();
+            const tweet: Tweet = {sender, message, timestamp};
+            return createTweet(tweet);    
+        }
+    }   
+    return Promise.reject(null);
+}
 
 export async function handleRegistrationRequest(request: Request, response: Response) {
     const data = request.body;
@@ -88,6 +108,15 @@ export async function handleRegistrationRequest(request: Request, response: Resp
 export async function handleLoginRequest(request: Request, response: Response) {
     try {
         const responseMessage = await login(request);
+        return response.status(200).json({message: responseMessage});
+    } catch (error) {
+        return response.status(401).json({error: error});
+    }
+}
+
+export async function handleCreateTweetRequest(request: Request, response: Response) {
+    try {
+        const responseMessage = await createTweets(request);
         return response.status(200).json({message: responseMessage});
     } catch (error) {
         return response.status(401).json({error: error});

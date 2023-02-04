@@ -6,7 +6,7 @@ import * as path from 'path';
 import cors from 'cors';
 import { Request, Response } from "express";
 import session from 'express-session';
-import { handleRegistrationRequest, handleLoginRequest } from './account';
+import { handleRegistrationRequest, handleLoginRequest, handleCreateTweetRequest } from './account';
 
 // import these 2 variables from fake-data-adaptor.ts
 import {getAllTweets, getTweetsByUsername} from "./fake-data-adaptor";
@@ -31,13 +31,13 @@ app.get('/json/:username', async (req, res) => {
     res.send(await getTweetsByUsername(username));
 })
 
-app.post('/tweets', async (request: Request, response: Response) => {
-    return await(getAllTweets);
+app.get('/tweets', async (request: Request, response: Response) => {
+    response.send(await getAllTweets());
 })
 
 app.post("/register", handleRegistrationRequest);
 app.post("/login", handleLoginRequest);
-
+app.post("/createTweet", handleCreateTweetRequest); 
 const port = 12345;
 console.log(`starting web server on port ${port}`);
 

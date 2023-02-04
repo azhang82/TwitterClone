@@ -1,10 +1,10 @@
 import React from "react";
 import { handleRegistrationSubmission } from "./client";
 
-export function RegisterForm() {
+export function RegisterPage() {
   return (
     <div>
-      <form onSubmit={handleRegistrationSubmission}>
+      <form onSubmit={handleRegistrationSubmission} className= "registerPage">
         <div>
           <label htmlFor="username-input">Username</label>
           <input

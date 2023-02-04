@@ -11,6 +11,7 @@ import notificationsIcon from './icons/notifications.svg';
 import profileIcon from './icons/profile.svg';
 import moreIcon from './icons/more.svg';
 import exploreIcon from './icons/explore.svg';
+import { MidBarProps } from './midbar';
 
 type IconProps = {
   imageUrl: string;
@@ -26,7 +27,7 @@ export function Icon(props: IconProps) {
   );
 }
 //Add class to each icon
-export function LeftBar() {
+export function LeftBar(props: MidBarProps) {
   return (
     <div className="leftbar">
       <div className = "sidebar-menu-item">
@@ -98,7 +99,7 @@ export function LeftBar() {
       </div>
 
       <div className="Tweet">
-      <TweetButtonComponent />
+      <TweetButtonComponent displayTweetForm={props.displayTweetForm} setDisplayTweetForm={props.setDisplayTweetForm}/>
       </div>
     </div>
   );
